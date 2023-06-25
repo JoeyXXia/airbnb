@@ -1,9 +1,9 @@
-function App() {
-  return (
-    <div className="App">
-      <h1>hello</h1>
-    </div>
-  );
-}
+import React, { memo } from 'react'
 
-export default App;
+const App = memo(() => {
+  return (
+    <div>hello</div>
+  )
+})
+
+export default App
