@@ -25,5 +25,5 @@ class XXRequest {
         return this.request({...config, method: "post"})
     }
 }
-
+// eslint-disable-next-line
 export default new XXRequest(BASE_URL,TIMEOUT)
