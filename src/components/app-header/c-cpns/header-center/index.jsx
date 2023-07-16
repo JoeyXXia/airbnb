@@ -1,9 +1,14 @@
-import React, { memo } from 'react'
+import React, { memo } from "react";
+import { CenterWrapper } from "./style";
 
 const HeaderCenter = memo(() => {
-    return (
-        <div>HeaderCenter</div>
-    )
-})
+  return (
+    <CenterWrapper>
+      <div>
+        HeaderCeddddddddddddddddddddddddddddddddddddddddddddddddddddddddnter
+      </div>
+    </CenterWrapper>
+  );
+});
 
-export default HeaderCenter
+export default HeaderCenter;

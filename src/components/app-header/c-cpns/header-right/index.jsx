@@ -1,9 +1,12 @@
-import React, { memo } from 'react'
+import React, { memo } from "react";
+import { RightWrapper } from "./style";
 
 const HeaderRight = memo(() => {
-    return (
-        <div>HeaderRight</div>
-    )
-})
+  return (
+    <RightWrapper>
+      <div>HeaderRight</div>
+    </RightWrapper>
+  );
+});
 
-export default HeaderRight
+export default HeaderRight;

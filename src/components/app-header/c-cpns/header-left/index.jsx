@@ -1,12 +1,12 @@
-import React, { memo } from 'react'
-import { LeftWrapper } from './sytle'
+import React, { memo } from "react";
+import { LeftWrapper } from "./sytle";
 
 const HeaderLeft = memo(() => {
-    return (
-        <LeftWrapper>
-        <div>HeaderLeft</div>
-        </LeftWrapper>
-    )
-})
+  return (
+    <LeftWrapper>
+      <div>HeaderLeft</div>
+    </LeftWrapper>
+  );
+});
 
-export default HeaderLeft
+export default HeaderLeft;

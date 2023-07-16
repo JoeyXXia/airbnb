@@ -1,6 +1,8 @@
-import  styled from "styled-components"
+import styled from "styled-components";
 
 export const HeaderWrapper = styled.div`
-    flex: 1;
-    color:red;
-`
+  display: flex;
+  align-items: center;
+  height: 80px;
+  border-bottom: 1px solid #eee;
+`;
