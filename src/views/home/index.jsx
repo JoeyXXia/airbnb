@@ -5,6 +5,7 @@ import { fetchHomeDataAction } from '@/store/modules/home'
 import { HomeWrapper } from '@/views/home/style'
 import SectionHeader from '@/components/section-header'
 import SectionRooms from '@/components/section-rooms'
+import HomeSectionV1 from '@/views/home/cpns/home-section-v1'
 
 const Home = memo(() => {
   const { goodPriceInfo } = useSelector(
@@ -23,10 +24,7 @@ const Home = memo(() => {
     <HomeWrapper>
       <HomeBanner />
       <div className="content">
-        <div className="good-price">
-          <SectionHeader title={goodPriceInfo.title} />
-          <SectionRooms roomList={goodPriceInfo.list} />
-        </div>
+        <HomeSectionV1 infoData={goodPriceInfo} />
       </div>
     </HomeWrapper>
   )
