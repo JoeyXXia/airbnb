@@ -7,21 +7,21 @@ import SectionRooms from '@/components/section-rooms'
 import SectionFooter from '@/components/section-footer'
 
 const HomeSectionV2 = memo((props) => {
-  const { infroDta } = props
-
-  const initialName = Object.keys(infroDta.dest_list)[0]
+  const { infoData } = props
+  // console.log(infoData)
+  const initialName = Object.keys(infoData.dest_list)[0]
   const [name, setName] = useState(initialName)
-  const tabNames = infroDta.dest_address?.((item) => item.name)
+  // const tabNames = infoData.dest_address?.((item) => item.name)
 
-  const tabClickHandle = useCallback(function (index, name) {
-    setName(name)
-  }, [])
+  // const tabClickHandle = useCallback(function (index, name) {
+  //   setName(name)
+  // }, [])
   return (
     <SectionV2Wrapper>
-      <SectionHeader title={infroDta.title} subtitle={infroDta.subtitle} />
+      <SectionHeader title={infoData.title} subtitle={infoData.subtitle} />
       <SectionTabs />
       <SectionRooms
-        roomList={infroDta.dest_list?.[name]}
+        roomList={infoData.dest_list?.[name]}
         itemWidth="33.33333%"
       />
       <SectionFooter name={name} />

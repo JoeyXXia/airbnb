@@ -3,28 +3,51 @@ import HomeBanner from 'src/views/home/cpns/home-banner'
 import { shallowEqual, useDispatch, useSelector } from 'react-redux'
 import { fetchHomeDataAction } from '@/store/modules/home'
 import { HomeWrapper } from '@/views/home/style'
-import SectionHeader from '@/components/section-header'
-import SectionRooms from '@/components/section-rooms'
 import HomeSectionV1 from '@/views/home/cpns/home-section-v1'
+import HomeSectionV2 from '@/views/home/cpns/home-section-v2'
+import { isEmptyObject } from '@/utils'
 
 const Home = memo(() => {
-  const { goodPriceInfo } = useSelector(
+  const {
+    goodPriceInfo,
+    highScoreInfo,
+    discountInfo,
+    recommendInfo,
+    longForInfo,
+    plusInfo
+  } = useSelector(
     (state) => ({
-      goodPriceInfo: state.home.goodPriceInfo
+      goodPriceInfo: state.home.goodPriceInfo,
+      highScoreInfo: state.home.highScoreInfo,
+      discountInfo: state.home.discountInfo,
+      recommendInfo: state.home.recommendInfo,
+      longForInfo: state.home.longForInfo,
+      plusInfo: state.home.plusInfo
     }),
     shallowEqual
   )
 
   const dispatch = useDispatch()
   useEffect(() => {
-    dispatch(fetchHomeDataAction('xxxx'))
+    dispatch(fetchHomeDataAction())
   }, [dispatch])
 
   return (
     <HomeWrapper>
       <HomeBanner />
       <div className="content">
-        <HomeSectionV1 infoData={goodPriceInfo} />
+        {isEmptyObject(discountInfo) && (
+          <HomeSectionV2 infoData={discountInfo} />
+        )}
+        {isEmptyObject(recommendInfo) && (
+          <HomeSectionV2 infoData={recommendInfo} />
+        )}
+        {isEmptyObject(goodPriceInfo) && (
+          <HomeSectionV1 infoData={goodPriceInfo} />
+        )}
+        {isEmptyObject(highScoreInfo) && (
+          <HomeSectionV1 infoData={highScoreInfo} />
+        )}
       </div>
     </HomeWrapper>
   )
