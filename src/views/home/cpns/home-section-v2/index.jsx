@@ -11,18 +11,18 @@ const HomeSectionV2 = memo((props) => {
   // console.log(infoData)
   const initialName = Object.keys(infoData.dest_list)[0]
   const [name, setName] = useState(initialName)
-  // const tabNames = infoData.dest_address?.((item) => item.name)
+  const tabNames = infoData.dest_address?.map((item) => item.name)
 
-  // const tabClickHandle = useCallback(function (index, name) {
-  //   setName(name)
-  // }, [])
+  const tabClickHandle = useCallback(function (index, name) {
+    setName(name)
+  }, [])
   return (
     <SectionV2Wrapper>
       <SectionHeader title={infoData.title} subtitle={infoData.subtitle} />
-      <SectionTabs />
+      <SectionTabs tabNames={tabNames} tabClick={tabClickHandle} />
       <SectionRooms
         roomList={infoData.dest_list?.[name]}
-        itemWidth="33.33333%"
+        itemwidth="33.33333%"
       />
       <SectionFooter name={name} />
     </SectionV2Wrapper>
