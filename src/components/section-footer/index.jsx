@@ -1,8 +1,8 @@
 import React, { memo } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { FooterWrapper } from '@/components/app-footer/style'
 import IconMoreArrow from '@/assets/svg/icon-more-arrow'
 import PropTypes from 'prop-types'
+import { FooterWrapper } from '@/components/section-footer/style'
 
 const SectionFooter = memo((props) => {
   const { name } = props
