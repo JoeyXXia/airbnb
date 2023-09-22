@@ -6,6 +6,7 @@ import { HomeWrapper } from '@/views/home/style'
 import HomeSectionV1 from '@/views/home/cpns/home-section-v1'
 import HomeSectionV2 from '@/views/home/cpns/home-section-v2'
 import { isEmptyObject } from '@/utils'
+import HomeSectionV3 from '@/views/home/cpns/home-section-v3'
 
 const Home = memo(() => {
   const {
@@ -48,6 +49,7 @@ const Home = memo(() => {
         {isEmptyObject(highScoreInfo) && (
           <HomeSectionV1 infoData={highScoreInfo} />
         )}
+        {isEmptyObject(plusInfo) && <HomeSectionV3 infoData={plusInfo} />}
       </div>
     </HomeWrapper>
   )
