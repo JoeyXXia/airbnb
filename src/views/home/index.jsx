@@ -7,6 +7,7 @@ import HomeSectionV1 from '@/views/home/cpns/home-section-v1'
 import HomeSectionV2 from '@/views/home/cpns/home-section-v2'
 import { isEmptyObject } from '@/utils'
 import HomeSectionV3 from '@/views/home/cpns/home-section-v3'
+import HomeLongFor from '@/views/home/cpns/home-longfor'
 
 const Home = memo(() => {
   const {
@@ -43,6 +44,7 @@ const Home = memo(() => {
         {isEmptyObject(recommendInfo) && (
           <HomeSectionV2 infoData={recommendInfo} />
         )}
+        {isEmptyObject(longForInfo) && <HomeLongFor infoData={longForInfo} />}
         {isEmptyObject(goodPriceInfo) && (
           <HomeSectionV1 infoData={goodPriceInfo} />
         )}
