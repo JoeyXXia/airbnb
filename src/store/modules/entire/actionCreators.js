@@ -18,7 +18,7 @@ export const changeRoomListAction = (roomList) => ({
   roomList
 })
 
-export const fetchEntireDataActoin = (page = 0) => {
+export const fetchEntireDataAction = (page = 0) => {
   return async (dispatch) => {
     dispatch(changeLoadingAction(true))
 
