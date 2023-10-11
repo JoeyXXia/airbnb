@@ -3,6 +3,7 @@ import { EntireRoomWrapper } from '@/views/entire/cpns/entire-rooms/style'
 import { shallowEqual, useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import RoomItem from '@/components/room-item'
+import { changeDetailInfoAction } from '@/store/modules/detail'
 
 const EntireRooms = memo(() => {
   const { roomList, isLoading } = useSelector(
@@ -13,12 +14,12 @@ const EntireRooms = memo(() => {
     shallowEqual
   )
 
-  const naviggate = useNavigate()
+  const navigate = useNavigate()
   const dispatch = useDispatch()
 
   function handleItemClick(item) {
-    naviggate('/detail')
-    // dispatch(ch)
+    navigate('/detail')
+    dispatch(changeDetailInfoAction(item))
   }
   return (
     <EntireRoomWrapper>
