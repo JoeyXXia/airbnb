@@ -35,7 +35,7 @@ const EntireRooms = memo(() => {
           )
         })}
       </div>
-      {isLoading && <div className="cove"></div>}
+      {isLoading && <div className="cover"></div>}
     </EntireRoomWrapper>
   )
 })
