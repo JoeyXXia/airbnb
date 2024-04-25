@@ -30,12 +30,12 @@ export const ViewWrapper = styled.div`
     cursor: pointer;
 
     &.left {
-      left: 0;
+      left: -18px;
       top: 50%;
       transform: translate(-50%, -50%);
     }
     &.right {
-      right: 0;
+      right: -18px;
       top: 50%;
       transform: translate(50%, -50%);
     }
