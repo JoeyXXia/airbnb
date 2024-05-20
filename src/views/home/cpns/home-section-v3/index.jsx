@@ -14,7 +14,7 @@ const HomeSectionV3 = memo((props) => {
       <div className="room-list">
         <ScrollView>
           {infoData.list.map((item) => {
-            return <RoomItem itemData={item} itemwidth="20%" key={item.id} />
+            return <RoomItem itemData={item} itemWidth="20%" key={item.id} />
           })}
         </ScrollView>
       </div>
