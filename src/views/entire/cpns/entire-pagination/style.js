@@ -4,7 +4,7 @@ export const PaginationWrapper = styled.div`
   justify-content: center;
   margin-top: 30px;
 
-  .pae-info {
+  .page-info {
     text-align: center;
 
     .info {
