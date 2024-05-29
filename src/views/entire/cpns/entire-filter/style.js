@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 export const FilterWrapper = styled.div`
-  position: fixed;
+  //position: fixed;
   z-index: 9;
   top: 80px;
   left: 0;
@@ -10,7 +10,7 @@ export const FilterWrapper = styled.div`
   align-items: center;
   height: 48px;
   padding-left: 16px;
-  border-bottom: 1px solid #f2f2f2;
+  //border-bottom: 1px solid #f2f2f2;
   background-color: #fff;
 
   .filter {

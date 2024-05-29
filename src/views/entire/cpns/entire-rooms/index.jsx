@@ -6,10 +6,11 @@ import RoomItem from '@/components/room-item'
 import { changeDetailInfoAction } from '@/store/modules/detail'
 
 const EntireRooms = memo(() => {
-  const { roomList, isLoading } = useSelector(
+  const { roomList, isLoading, totalCount } = useSelector(
     (state) => ({
       roomList: state.entire.roomList,
-      isLoading: state.entire.isLoading
+      isLoading: state.entire.isLoading,
+      totalCount: state.entire.totalCount
     }),
     shallowEqual
   )
@@ -23,6 +24,7 @@ const EntireRooms = memo(() => {
   }
   return (
     <EntireRoomWrapper>
+      <h2 className="title">共{totalCount}初住所</h2>
       <div className="list">
         {roomList.map((item, index) => {
           return (
