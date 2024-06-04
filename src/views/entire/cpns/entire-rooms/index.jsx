@@ -24,7 +24,7 @@ const EntireRooms = memo(() => {
   }
   return (
     <EntireRoomWrapper>
-      <h2 className="title">共{totalCount}初住所</h2>
+      <h2 className="title">共{totalCount}处住所</h2>
       <div className="list">
         {roomList.map((item, index) => {
           return (
