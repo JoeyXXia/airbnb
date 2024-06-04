@@ -1,14 +1,17 @@
 import React, { memo } from 'react'
 import { PaginationWrapper } from '@/views/entire/cpns/entire-pagination/style'
-import { useDispatch, useSelector } from 'react-redux'
+import { shallowEqual, useDispatch, useSelector } from 'react-redux'
 import { fetchEntireDataAction } from '@/store/modules/entire/actionCreators'
 import { Pagination } from '@mui/material'
 
 const EntirePagination = memo(() => {
-  const { currentPage, totalCount } = useSelector((state) => ({
-    currentPage: state.entire.currentPage,
-    totalCount: state.entire.totalCount
-  }))
+  const { currentPage, totalCount } = useSelector(
+    (state) => ({
+      currentPage: state.entire.currentPage,
+      totalCount: state.entire.totalCount
+    }),
+    shallowEqual
+  )
 
   const count = Math.ceil(totalCount / 20)
   const start = currentPage * 20 + 1
