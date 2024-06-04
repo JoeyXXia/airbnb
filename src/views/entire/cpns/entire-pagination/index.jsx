@@ -12,7 +12,7 @@ const EntirePagination = memo(() => {
 
   const count = Math.ceil(totalCount / 20)
   const start = currentPage * 20 + 1
-  const end = currentPage * 1 + 20
+  const end = currentPage * 20 + 20
 
   const dispatch = useDispatch()
   function pageChangeHandler(event, newPage) {
