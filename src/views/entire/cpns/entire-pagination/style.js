@@ -22,7 +22,7 @@ export const PaginationWrapper = styled.div`
       text-decoration: underline;
     }
   }
-  . MuiPaginationItem-page.Mui-selected {
+  .MuiPaginationItem-page.Mui-selected {
     background-color: #222;
     color: #fff;
 
