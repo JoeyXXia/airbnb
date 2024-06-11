@@ -1,4 +1,4 @@
-import React, { memo } from 'react'
+import React, { memo, useRef } from 'react'
 import { ItemWrapper } from '@/components/room-item/style'
 import PropTypes from 'prop-types'
 import { Rating } from '@mui/material'
@@ -8,7 +8,11 @@ import IconArrowRight from '@/assets/svg/icon-arrow-right'
 
 const RoomItem = memo((props) => {
   const { itemData, itemWidth = '25%' } = props
+  const swiperRef = useRef()
 
+  function controlClickHandle(isRight = true) {
+    isRight ? swiperRef.current.next() : swiperRef.current.prev()
+  }
   return (
     <ItemWrapper
       verifycolor={itemData?.verify_info?.text_color || '#39576a'}
@@ -20,14 +24,20 @@ const RoomItem = memo((props) => {
         {/*</div>*/}
         <div className="swiper">
           <div className="controls">
-            <div className="btn left">
+            <div
+              className="btn left"
+              onClick={(e) => controlClickHandle(false)}
+            >
               <IconArrowLeft width="30" height="30" />
             </div>
-            <div className="btn right">
+            <div
+              className="btn right"
+              onClick={(e) => controlClickHandle(true)}
+            >
               <IconArrowRight width="30" height="30" />
             </div>
           </div>
-          <Carousel dots={false}>
+          <Carousel dots={false} ref={swiperRef}>
             {itemData?.picture_urls?.map((item) => {
               return (
                 <div className="cover" key={item}>
