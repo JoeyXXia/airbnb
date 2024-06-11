@@ -2,6 +2,9 @@ import React, { memo } from 'react'
 import { ItemWrapper } from '@/components/room-item/style'
 import PropTypes from 'prop-types'
 import { Rating } from '@mui/material'
+import { Carousel } from 'antd'
+import IconArrowLeft from '@/assets/svg/icon-arrow-left'
+import IconArrowRight from '@/assets/svg/icon-arrow-right'
 
 const RoomItem = memo((props) => {
   const { itemData, itemWidth = '25%' } = props
@@ -12,8 +15,27 @@ const RoomItem = memo((props) => {
       itemWidth={itemWidth}
     >
       <div className="inner">
-        <div className="cover">
-          <img src={itemData.picture_url} alt="" />
+        {/*<div className="cover">*/}
+        {/*  <img src={itemData.picture_url} alt="" />*/}
+        {/*</div>*/}
+        <div className="swiper">
+          <div className="controls">
+            <div className="btn left">
+              <IconArrowLeft width="30" height="30" />
+            </div>
+            <div className="btn right">
+              <IconArrowRight width="30" height="30" />
+            </div>
+          </div>
+          <Carousel dots={false}>
+            {itemData?.picture_urls?.map((item) => {
+              return (
+                <div className="cover" key={item}>
+                  <img src={item} alt="" />
+                </div>
+              )
+            })}
+          </Carousel>
         </div>
         <div className="desc">{itemData.verify_info.messages.join(' · ')}</div>
         <div className="name">{itemData.name}</div>
