@@ -20,7 +20,7 @@ const Demo = memo(() => {
     if (newIndex < 0) newIndex = names.length - 1
     if (newIndex > names.length - 1) newIndex = 0
 
-    console.log(newIndex)
+    // console.log(newIndex)
     setSelectIndex(newIndex)
   }
 

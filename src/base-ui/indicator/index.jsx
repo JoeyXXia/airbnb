@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { IndicatorWrapper } from '@/base-ui/indicator/style'
 
 const Indicator = memo((props) => {
-  const { selectIndex } = props
+  const { selectIndex = 0 } = props
   const scrollRef = useRef()
 
   useEffect(() => {
