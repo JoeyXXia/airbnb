@@ -9,7 +9,7 @@ import Indicator from '@/base-ui/indicator'
 import classNames from 'classnames'
 
 const RoomItem = memo((props) => {
-  const { itemData, itemWidth = '25%' } = props
+  const { itemData, itemWidth = '25%', itemClick } = props
   const swiperRef = useRef()
   const [selectIndex, setSelectIndex] = useState(0)
 
@@ -22,6 +22,10 @@ const RoomItem = memo((props) => {
     if (newIndex > length - 1) newIndex = 0
 
     setSelectIndex(newIndex)
+  }
+
+  function itemClickHandle() {
+    if (itemClick) itemClick(itemData)
   }
 
   const pictureElm = (
@@ -71,6 +75,7 @@ const RoomItem = memo((props) => {
     <ItemWrapper
       verifycolor={itemData?.verify_info?.text_color || '#39576a'}
       itemWidth={itemWidth}
+      onClick={itemClickHandle}
     >
       <div className="inner">
         {!itemData.picture_urls ? pictureElm : swiperElm}

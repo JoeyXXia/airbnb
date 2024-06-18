@@ -1,4 +1,4 @@
-import React, { memo } from 'react'
+import React, { memo, useCallback } from 'react'
 import { EntireRoomWrapper } from '@/views/entire/cpns/entire-rooms/style'
 import { shallowEqual, useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
@@ -18,10 +18,14 @@ const EntireRooms = memo(() => {
   const navigate = useNavigate()
   const dispatch = useDispatch()
 
-  function handleItemClick(item) {
-    navigate('/detail')
-    dispatch(changeDetailInfoAction(item))
-  }
+  const itemClickHandle = useCallback(
+    (item) => {
+      dispatch(changeDetailInfoAction(item))
+      navigate('/detail')
+    },
+    [navigate, dispatch]
+  )
+
   return (
     <EntireRoomWrapper>
       <h2 className="title">共{totalCount}处住所</h2>
@@ -32,7 +36,7 @@ const EntireRooms = memo(() => {
               itemData={item}
               itemWidth="20%"
               key={item._id}
-              itemClick={(e) => handleItemClick(item)}
+              itemClick={itemClickHandle}
             />
           )
         })}
