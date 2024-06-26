@@ -5,12 +5,17 @@ import IconClose from '@/assets/svg/icon-close'
 import IconArrowLeft from '@/assets/svg/icon-arrow-left'
 import IconArrowRight from '@/assets/svg/icon-arrow-right'
 import { CSSTransition, SwitchTransition } from 'react-transition-group'
+import IconTriangleBottom from '@/assets/svg/icon-triangle-bottom'
+import Indicator from '@/base-ui/indicator'
+import classNames from 'classnames'
+import IconTriangleTop from '@/assets/svg/icon-triangle-top'
 
 const PictureBrowser = memo((props) => {
   const { pictureUrls, closeClick } = props
 
   const [currentIndex, setCurrentIndex] = useState(0)
   const [isNext, setIsNext] = useState(false)
+  const [showList, setShowList] = useState(true)
 
   useEffect(() => {
     document.body.style.overflow = 'hidden'
@@ -33,7 +38,7 @@ const PictureBrowser = memo((props) => {
   }
 
   return (
-    <PictureBrowserWrapper isNext={isNext}>
+    <PictureBrowserWrapper isNext={isNext} showList={showList}>
       <div className="top">
         <div className="close-btn" onClick={closeBtnClickHandle}>
           <IconClose />
@@ -66,7 +71,39 @@ const PictureBrowser = memo((props) => {
           </SwitchTransition>
         </div>
       </div>
-      <div className="preview"></div>
+      <div className="preview">
+        <div className="info">
+          <div className="desc">
+            <div className="count">
+              <span>
+                {currentIndex + 1}/ {pictureUrls.length}
+              </span>
+              <span>room apartment图片{currentIndex + 1}</span>
+            </div>
+            <div className="toggle" onClick={(e) => setShowList(!showList)}>
+              <span>{showList ? '隐藏' : '显示'}照片列表</span>
+              {showList ? <IconTriangleBottom /> : <IconTriangleTop />}
+            </div>
+          </div>
+          <div className="list">
+            <Indicator selectIndex={currentIndex}>
+              {pictureUrls.map((item, index) => {
+                return (
+                  <div
+                    className={classNames('item', {
+                      active: currentIndex === index
+                    })}
+                    key={item}
+                    onClick={(e) => setCurrentIndex(index)}
+                  >
+                    <img src={item} alt="" />
+                  </div>
+                )
+              })}
+            </Indicator>
+          </div>
+        </div>
+      </div>
     </PictureBrowserWrapper>
   )
 })
