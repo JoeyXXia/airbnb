@@ -36,6 +36,10 @@ const PictureBrowser = memo((props) => {
     setCurrentIndex(newIndex)
     setIsNext(isNext)
   }
+  function handleBottomClick(index) {
+    setIsNext(index > currentIndex)
+    setCurrentIndex(index)
+  }
 
   return (
     <PictureBrowserWrapper isNext={isNext} showList={showList}>
@@ -76,7 +80,7 @@ const PictureBrowser = memo((props) => {
           <div className="desc">
             <div className="count">
               <span>
-                {currentIndex + 1}/ {pictureUrls.length}
+                {currentIndex + 1} / {pictureUrls.length}
               </span>
               <span>room apartment图片{currentIndex + 1}</span>
             </div>
@@ -94,7 +98,7 @@ const PictureBrowser = memo((props) => {
                       active: currentIndex === index
                     })}
                     key={item}
-                    onClick={(e) => setCurrentIndex(index)}
+                    onClick={(e) => handleBottomClick(index)}
                   >
                     <img src={item} alt="" />
                   </div>
