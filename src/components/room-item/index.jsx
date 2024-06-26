@@ -13,7 +13,7 @@ const RoomItem = memo((props) => {
   const swiperRef = useRef()
   const [selectIndex, setSelectIndex] = useState(0)
 
-  function controlClickHandle(isRight = true) {
+  function controlClickHandle(isRight = true, event) {
     isRight ? swiperRef.current.next() : swiperRef.current.prev()
 
     let newIndex = isRight ? selectIndex + 1 : selectIndex - 1
@@ -22,6 +22,7 @@ const RoomItem = memo((props) => {
     if (newIndex > length - 1) newIndex = 0
 
     setSelectIndex(newIndex)
+    event.stopPropagation()
   }
 
   function itemClickHandle() {
@@ -37,10 +38,10 @@ const RoomItem = memo((props) => {
   const swiperElm = (
     <div className="swiper">
       <div className="controls">
-        <div className="btn left" onClick={(e) => controlClickHandle(false)}>
+        <div className="btn left" onClick={(e) => controlClickHandle(false, e)}>
           <IconArrowLeft width="30" height="30" />
         </div>
-        <div className="btn right" onClick={(e) => controlClickHandle(true)}>
+        <div className="btn right" onClick={(e) => controlClickHandle(true, e)}>
           <IconArrowRight width="30" height="30" />
         </div>
       </div>
