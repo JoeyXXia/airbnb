@@ -6,6 +6,7 @@ import { HeaderWrapper, SearchAreaWrapper } from './style'
 import { shallowEqual, useSelector } from 'react-redux'
 import classNames from 'classnames'
 import useScrollPosition from '@/hooks/useScrollPosition'
+import { ThemeProvider } from 'styled-components'
 
 const AppHeader = memo(() => {
   const [isSearch, setIsSearch] = useState(false)
@@ -16,7 +17,7 @@ const AppHeader = memo(() => {
     }),
     shallowEqual
   )
-  const { isFixed } = headerConfig
+  const { isFixed, topAlpha } = headerConfig
 
   const { scrollY } = useScrollPosition()
   const preY = useRef(0)
@@ -28,23 +29,30 @@ const AppHeader = memo(() => {
   )
   if (isSearch && Math.abs(scrollY - preY.current) > 30) setIsSearch(false)
 
+  const isAlpha = topAlpha && scrollY === 0
+
   return (
-    <HeaderWrapper className={classNames({ fixed: isFixed })}>
-      <div className="content">
-        <div className="top">
-          <HeaderLeft />
-          <HeaderCenter
-            isSearch={isSearch}
-            searchBarClick={(e) => setIsSearch(true)}
-          />
-          <HeaderRight />
+    <ThemeProvider theme={{ isAlpha }}>
+      <HeaderWrapper
+        className={classNames({ fixed: isFixed })}
+        isAlpha={isAlpha}
+      >
+        <div className="content">
+          <div className="top">
+            <HeaderLeft />
+            <HeaderCenter
+              isSearch={isAlpha || isSearch}
+              searchBarClick={(e) => setIsSearch(true)}
+            />
+            <HeaderRight />
+          </div>
+          <SearchAreaWrapper isSearch={isSearch} />
         </div>
-        <SearchAreaWrapper isSearch={isSearch} />
-      </div>
-      {isSearch && (
-        <div className="cover" onClick={(e) => setIsSearch(false)}></div>
-      )}
-    </HeaderWrapper>
+        {isSearch && (
+          <div className="cover" onClick={(e) => setIsSearch(false)}></div>
+        )}
+      </HeaderWrapper>
+    </ThemeProvider>
   )
 })
 
