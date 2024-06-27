@@ -1,12 +1,14 @@
-import React, { memo } from 'react'
+import React, { memo, useState } from 'react'
 import HeaderLeft from './c-cpns/header-left'
 import HeaderCenter from './c-cpns/header-center'
 import HeaderRight from './c-cpns/header-right'
-import { HeaderWrapper } from './style'
+import { HeaderWrapper, SearchAreaWrapper } from './style'
 import { shallowEqual, useSelector } from 'react-redux'
 import classNames from 'classnames'
 
 const AppHeader = memo(() => {
+  const [isSearch, setIsSearch] = useState(false)
+
   const { headerConfig } = useSelector(
     (state) => ({
       headerConfig: state.main.headerConfig
@@ -20,12 +22,17 @@ const AppHeader = memo(() => {
       <div className="content">
         <div className="top">
           <HeaderLeft />
-          <HeaderCenter />
+          <HeaderCenter
+            isSearch={isSearch}
+            searchBarClick={(e) => setIsSearch(true)}
+          />
           <HeaderRight />
         </div>
-        <div className="search-area"></div>
+        <SearchAreaWrapper isSearch={isSearch} />
       </div>
-      <div className="cover"></div>
+      {isSearch && (
+        <div className="cover" onClick={(e) => setIsSearch(false)}></div>
+      )}
     </HeaderWrapper>
   )
 })
