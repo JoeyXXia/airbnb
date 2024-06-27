@@ -17,9 +17,15 @@ const AppHeader = memo(() => {
   const { isFixed } = headerConfig
   return (
     <HeaderWrapper className={classNames({ fixed: isFixed })}>
-      <HeaderLeft />
-      <HeaderCenter />
-      <HeaderRight />
+      <div className="content">
+        <div className="top">
+          <HeaderLeft />
+          <HeaderCenter />
+          <HeaderRight />
+        </div>
+        <div className="search-area"></div>
+      </div>
+      <div className="cover"></div>
     </HeaderWrapper>
   )
 })

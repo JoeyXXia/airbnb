@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const CenterWrapper = styled.div`
   .search-bar {
@@ -12,14 +12,14 @@ export const CenterWrapper = styled.div`
     border: 1px solid #ddd;
     cursor: pointer;
     border-radius: 25px;
-    ${props => props.theme.mixin.boxShadow};
-    
+    ${(props) => props.theme.mixin.boxShadow};
+
     .text {
       padding: 0 16px;
       color: #222;
       font-weight: 600;
     }
-    
+
     .icon {
       display: flex;
       align-items: center;
@@ -28,7 +28,20 @@ export const CenterWrapper = styled.div`
       height: 32px;
       border-radius: 50%;
       color: #fff;
-      background-color: ${props => props.theme.color.primary};
+      background-color: ${(props) => props.theme.color.primary};
     }
   }
-`;
+
+  .search-detail {
+    position: relative;
+    transform-origin: 50% 0;
+    will-change: transform, opacity;
+
+    .infos {
+      position: absolute;
+      top: 60px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+`
