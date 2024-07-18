@@ -23,10 +23,7 @@ const AppHeader = memo(() => {
   const preY = useRef(0)
 
   if (!isSearch) preY.current = scrollY
-  console.log(
-    'scrollY - preY.current',
-    isSearch && Math.abs(scrollY - preY.current) > 30
-  )
+
   if (isSearch && Math.abs(scrollY - preY.current) > 30) setIsSearch(false)
 
   const isAlpha = topAlpha && scrollY === 0
