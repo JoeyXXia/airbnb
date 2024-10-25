@@ -1,5 +1,5 @@
 import React, { memo, useEffect, useState } from 'react'
-import PropTypes, { func } from 'prop-types'
+import PropTypes from 'prop-types'
 import { PictureBrowserWrapper } from '@/base-ui/picture-browser/style'
 import IconClose from '@/assets/svg/icon-close'
 import IconArrowLeft from '@/assets/svg/icon-arrow-left'
